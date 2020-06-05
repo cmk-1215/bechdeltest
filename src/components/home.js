@@ -33,8 +33,8 @@ class Home extends Component {
                 Search Movies
               </Link>
               <div className="divider"></div>
-              <Link className="btn btn-outline-light nav-button" to="">
-                Movies that Pass
+              <Link className="btn btn-outline-light nav-button" to="/race-representation">
+                Race Representation
               </Link>
               <div className="divider"></div>
               <Link className="btn btn-outline-light nav-button" to="/my-list">

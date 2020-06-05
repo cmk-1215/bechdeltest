@@ -12,22 +12,22 @@ import { faCheckSquare, faCheckCircle, faTimes } from '@fortawesome/free-solid-s
 
 library.add(faCheckSquare, faCheckCircle, faTimes)
 class MyList extends Component {
-  
+
   renderMovies() {
     return this.props.movies.map(movie => {
-      if (movie.rating == "0") {
+      if (movie.rating === "0") {
         movie.icon1 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating == "1") {
+      } else if (movie.rating === "1") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating == "2") {
+      } else if (movie.rating === "2") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating == "3") {
+      } else if (movie.rating === "3") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
         movie.icon2 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
         movie.icon3 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
@@ -86,5 +86,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);
-
-
