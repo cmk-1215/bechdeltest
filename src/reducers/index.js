@@ -9,6 +9,7 @@ import _ from "lodash";
 const rootReducer = combineReducers({
   images: ImageReducer,
   movies: MovieReducer,
+  // buttonText: ""
 
   selectedMovies: function (state = [], action) {
     switch (action.type) {
@@ -24,8 +25,8 @@ const rootReducer = combineReducers({
 
       case "DELETE_MOVIE":
         const newState = state.filter( movie => movie !== action.payload );
-     
-        return newState; 
+
+        return newState;
 
       default:
         return state

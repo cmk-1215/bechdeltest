@@ -30,8 +30,8 @@ class SearchPage extends Component {
     event.preventDefault();
     // We need to go and fetch movie data based on the search term
     // the state at this point is already updated from event handler of the user typing, so we invoke the fetch movies function (making the api call) and then resetting the state back back to it's original state (clearing term)
-    console.log(this.props.fetchImage(this.state.term));
-    this.props.fetchImage(this.state.term);
+    // console.log(this.props.fetchImage(this.state.term));
+    // this.props.fetchImage(this.state.term);
     this.props.fetchMovies(this.state.term);
     this.setState({ term: '' });
   }
@@ -40,10 +40,12 @@ class SearchPage extends Component {
   //   console.log(movie)
   // }
   renderMovies() {
-    console.log('Inside renderMovies, images:', this.props.images)
+    // console.log('Inside renderMovies, images:', this.props.images)
     console.log('Inside renderMovies, movies:', this.props.movies)
-    console.log(this.props.images.data);
-    const rating = this.props.movies.rating
+
+    const rating = this.props.movies.rating;
+    const imdbID = this.props.movies.imbdid;
+    // console.log('Inside renderMovies, images 2:', this.props.images)
     return _.map(this.props.movies, movie => {
       if (movie.rating == "0") {
         movie.icon1 = <FontAwesomeIcon icon={faTimes} size="2x" />
@@ -129,9 +131,9 @@ class SearchPage extends Component {
             </thead>
             <tbody>{this.renderMovies()}</tbody>
           </table>
-          <Link to="/"><button className="btn btn-secondary">Back to Homepage</button></Link>
+          <Link to="/"><button className="btn btn-primary">Back to Homepage</button></Link>
           <div className="divider"></div>
-          <Link to="/my-list"><button className="btn btn-secondary">View My List</button></Link>
+          <Link to="/my-list"><button className="btn btn-primary">View My List</button></Link>
 
         </div>
       </div>
@@ -149,7 +151,7 @@ function mapStateToProps(state) {
   }
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMovies, addMovie, fetchImage }, dispatch);
+  return bindActionCreators({ fetchMovies, addMovie, }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);

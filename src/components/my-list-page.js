@@ -9,25 +9,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 //import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
-
 library.add(faCheckSquare, faCheckCircle, faTimes)
 class MyList extends Component {
-
   renderMovies() {
     return this.props.movies.map(movie => {
-      if (movie.rating === "0") {
+      if (movie.rating == "0") {
         movie.icon1 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating === "1") {
+      } else if (movie.rating == "1") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faTimes} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating === "2") {
+      } else if (movie.rating == "2") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon2 = <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         movie.icon3 = <FontAwesomeIcon icon={faTimes} size="2x" />
-      } else if (movie.rating === "3") {
+      } else if (movie.rating == "3") {
         movie.icon1 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
         movie.icon2 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
         movie.icon3 = <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
@@ -44,8 +42,8 @@ class MyList extends Component {
     })
   }
   render() {
-    return (
 
+    return (
       <div>
         <div className="navigation">
           <div className="col-md-8 offset-md-2">
@@ -54,11 +52,10 @@ class MyList extends Component {
             <br/>
           </div>
         </div>
-
           <div className="col-md-8 offset-md-2 opacity">
             <h3>My List of Movies</h3>
             <table className="table table-hover">
-            <thead>
+            <thead id="table-head">
               <tr>
                 <th>Title</th>
                 <th>Two Female Characters</th>
@@ -70,19 +67,19 @@ class MyList extends Component {
           </table>
           <Link to="/"><button className="btn btn-secondary">Back to Homepage</button></Link>
           <div className="divider"></div>
+          <Link to="/search"><button className="btn btn-secondary">Back to Search</button></Link>
+          <div className="divider"></div>
         </div>
-
       </div>
     )
+
   }
 }
 function mapStateToProps(state) {
   console.log('Inside mapStateToProps', state);
   return { movies: state.selectedMovies }
 }
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ deleteMovie }, dispatch);
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);
